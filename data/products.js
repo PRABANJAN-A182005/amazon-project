@@ -722,3 +722,15 @@ export const products = [
   }
   return new Product(productDetails)
 });
+
+
+// this outside the class in original JS it will point window
+// in a module it will point to the module itself
+
+// in arrow functions, this is lexically bound where this will point to the context where the arrow function is defined in simple words it will point to the module itself
+// inside an arrow function this will point the outer this which is the module itself 
+
+/* points to remember for "this" in js
+1) inside a method, "this" points to the outer object.
+2) inside a function, "this" points to the global object. this = undefined , but we can change it.
+3) inside an arrow function, do not change the value of 'this'. */
