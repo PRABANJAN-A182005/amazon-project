@@ -32,7 +32,7 @@ function renderProductGrid(){
                     ${product.getPrice()}
                 </div>
 
-                <div class="product-quantity-container">
+                <div class="product-quantity-container js-product-quantity-container">
                     <select>
                     <option selected value="1">1</option>
                     <option value="2">2</option>
@@ -82,4 +82,16 @@ function renderProductGrid(){
             updateCartQuantity();
         })
     });
+
+    document.querySelectorAll('.js-add-to-cart').forEach((button) => {
+    button.addEventListener('click', () => {
+        const productId = button.dataset.productId;
+        const container = button.closest('.product-container');
+        const quantitySelect = container.querySelector('select');
+        const selectedQuantity = parseInt(quantitySelect.value);
+
+        addToCart(productId, selectedQuantity-1);
+        updateCartQuantity();
+    });
+});
 }
